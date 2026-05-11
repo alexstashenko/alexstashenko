@@ -56,7 +56,8 @@ nav.transparent .hamburger span { background: var(--black); }
 /* ── HERO ── */
 .hero {
   height: 100vh; position: relative;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding-top: 28vh;
   overflow: hidden; background: #1c1c1c;
 }
 .hero-bg { position: absolute; inset: 0; }

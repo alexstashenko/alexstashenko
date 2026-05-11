@@ -36,7 +36,7 @@ nav.transparent .nav-logo { color: var(--black); }
 .nav-links { display: flex; gap: 36px; }
 .nav-links a {
   font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-  opacity: 0.55; transition: opacity 0.2s, color 0.4s;
+  transition: opacity 0.2s, color 0.4s;
 }
 nav.transparent .nav-links a { color: var(--black); }
 .nav-links a:hover, .nav-links a.active { opacity: 1; }

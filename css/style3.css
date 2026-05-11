@@ -197,6 +197,7 @@ nav.transparent .hamburger span { background: var(--black); }
   .grid-h { grid-template-columns: repeat(2, 1fr); gap: 6px; }
   .grid-v { grid-template-columns: repeat(2, 1fr); gap: 6px; }
   .grid-s { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .grid-natural { grid-template-columns: 1fr; }
 
   .text-page { padding: 48px 20px 80px; }
 

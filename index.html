@@ -49,8 +49,8 @@ nav {
 .series-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  height: calc(100vh - var(--nav-h));
+  gap: 14px;
+  padding: 14px;
   margin-top: var(--nav-h);
 }
 
@@ -58,6 +58,7 @@ nav {
   position: relative;
   overflow: hidden;
   background: #1a1a1a;
+  aspect-ratio: 1;
 }
 
 .series-card img {
@@ -96,11 +97,9 @@ nav {
 
   .series-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: none;
-    height: auto;
+    gap: 10px;
+    padding: 10px;
   }
-
-  .series-card { height: 56vw; }
 }
   </style>
 </head>

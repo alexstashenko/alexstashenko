@@ -133,6 +133,12 @@ nav.transparent .hamburger span { background: var(--black); }
 .grid-v .photo-item { aspect-ratio: 2/3; }
 .grid-s .photo-item { aspect-ratio: 1; }
 
+/* ── MASONRY ── */
+.masonry { columns: 3; column-gap: 10px; }
+.masonry .photo-item { break-inside: avoid; margin-bottom: 10px; background: none; }
+.masonry .photo-item img { width: 100%; height: auto; object-fit: unset; }
+.masonry .photo-item:hover img { transform: scale(1.02); }
+
 /* ── LIGHTBOX ── */
 .lightbox {
   display: none; position: fixed; inset: 0;
@@ -192,6 +198,13 @@ nav.transparent .hamburger span { background: var(--black); }
 
   .lb-prev { left: 4px; padding: 10px; }
   .lb-next { right: 4px; padding: 10px; }
+
+  .masonry { columns: 2; column-gap: 6px; }
+  .masonry .photo-item { margin-bottom: 6px; }
+}
+
+@media (max-width: 480px) {
+  .masonry { columns: 1; }
 }
 
 @media (max-width: 480px) {

@@ -25,21 +25,17 @@ a { color: inherit; text-decoration: none; }
   z-index: 10;
 }
 
-.bar-back {
-  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
-  opacity: 0.45; transition: opacity 0.2s; cursor: pointer;
-}
-.bar-back:hover { opacity: 1; }
-
 .bar-title {
-  position: absolute; left: 50%; transform: translateX(-50%);
   font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
   opacity: 0.45;
 }
 
-.bar-counter {
-  font-size: 11px; letter-spacing: 0.1em; opacity: 0.35;
+.bar-close {
+  font-size: 22px; line-height: 1;
+  opacity: 0.4; transition: opacity 0.2s; cursor: pointer;
+  background: none; border: none; color: #fff; padding: 4px;
 }
+.bar-close:hover { opacity: 1; }
 
 /* ── PHOTO VIEWER ── */
 .viewer {
@@ -67,7 +63,7 @@ a { color: inherit; text-decoration: none; }
 .nav-next { right: 0; }
 
 /* ── DOTS ── */
-.dots {
+.bottom {
   position: fixed; bottom: 0; left: 0; right: 0;
   height: 48px;
   display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -80,14 +76,18 @@ a { color: inherit; text-decoration: none; }
   flex-shrink: 0;
 }
 .dot.active { opacity: 0.7; }
+
+.counter {
+  font-size: 11px; letter-spacing: 0.1em; opacity: 0.35;
+  margin-left: 14px;
+}
   </style>
 </head>
 <body>
 
 <div class="bar">
-  <a class="bar-back" href="index.html">← Назад</a>
-  <span class="bar-title">Сквозь стекло</span>
-  <span class="bar-counter" id="counter"></span>
+  <span class="bar-title">Сквозь стекло (цвет)</span>
+  <button class="bar-close" onclick="location.href='index.html'" aria-label="Закрыть">&#x2715;</button>
 </div>
 
 <div class="viewer">
@@ -97,7 +97,10 @@ a { color: inherit; text-decoration: none; }
 <button class="nav-btn nav-prev" id="prev">&#8592;</button>
 <button class="nav-btn nav-next" id="next">&#8594;</button>
 
-<div class="dots" id="dots"></div>
+<div class="bottom">
+  <div id="dots" style="display:flex;gap:10px;align-items:center;"></div>
+  <span class="counter" id="counter"></span>
+</div>
 
 <script>
 const photos = [

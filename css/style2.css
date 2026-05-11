@@ -134,7 +134,8 @@ nav.transparent .hamburger span { background: var(--black); }
 .grid-s .photo-item { aspect-ratio: 1; }
 
 .grid-natural { grid-template-columns: repeat(3, 1fr); }
-.grid-natural .photo-item img { height: auto; object-fit: unset; }
+.grid-natural .photo-item { aspect-ratio: 3/2; background: var(--white); }
+.grid-natural .photo-item img { width: 100%; height: 100%; object-fit: contain; }
 
 /* ── MASONRY ── */
 .masonry { columns: 3; column-gap: 10px; }

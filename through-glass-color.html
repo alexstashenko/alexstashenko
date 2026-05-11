@@ -31,9 +31,12 @@ a { color: inherit; text-decoration: none; }
 }
 
 .bar-close {
-  font-size: 11px; line-height: 1;
+  font-size: 22px; line-height: 1;
   opacity: 0.4; transition: opacity 0.2s; cursor: pointer;
   background: none; border: none; color: #fff; padding: 4px;
+}
+@media (max-width: 768px) {
+  .bar-close { font-size: 11px; }
 }
 .bar-close:hover { opacity: 1; }
 

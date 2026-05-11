@@ -133,7 +133,8 @@ nav.transparent .hamburger span { background: var(--black); }
 .grid-v .photo-item { aspect-ratio: 2/3; }
 .grid-s .photo-item { aspect-ratio: 1; }
 
-.series-content .grid + .grid { margin-top: 10px; }
+.grid-natural { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.grid-natural .photo-item img { height: auto; object-fit: unset; }
 
 /* ── MASONRY ── */
 .masonry { columns: 3; column-gap: 10px; }

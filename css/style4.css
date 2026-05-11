@@ -55,14 +55,17 @@ nav.transparent .hamburger span { background: var(--black); }
 /* ── HERO ── */
 .hero {
   height: 100vh; position: relative;
-  display: flex; align-items: flex-start; justify-content: center;
-  padding-top: 28vh;
+  display: flex; align-items: center; justify-content: center;
   overflow: hidden; background: #1c1c1c;
 }
 .hero-bg { position: absolute; inset: 0; }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
 .hero-overlay { display: none; }
-.hero-content { position: relative; text-align: center; color: var(--black); padding: 0 24px; }
+.hero-content { position: relative; text-align: center; color: #fff; padding: 0 24px; }
+.hero-title {
+  font-size: clamp(13px, 1.6vw, 18px);
+  font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+}
 .hero-name {
   font-size: clamp(26px, 4.5vw, 52px);
   font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase;

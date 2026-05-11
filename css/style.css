@@ -60,7 +60,7 @@ nav.transparent .hamburger span { background: var(--black); }
   overflow: hidden; background: #1c1c1c;
 }
 .hero-bg { position: absolute; inset: 0; }
-.hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: bottom; }
 .hero-overlay { display: none; }
 .hero-content { position: relative; text-align: center; color: var(--black); padding: 0 24px; }
 .hero-name {

@@ -23,8 +23,7 @@ nav {
   z-index: 100;
   transition: background 0.4s, border-color 0.4s;
 }
-nav.transparent { background: transparent; border-bottom: 1px solid transparent; }
-nav.solid { background: var(--white); border-bottom: 1px solid #e8e8e8; }
+nav.transparent, nav.solid { background: var(--white); border-bottom: 1px solid #e8e8e8; }
 
 .nav-logo {
   font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;

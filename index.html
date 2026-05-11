@@ -47,10 +47,16 @@ nav {
 
 /* ── SERIES GRID ── */
 .series-grid {
+  --gap: 12px;
+  --card: min(
+    calc((100vw * 0.8 - var(--gap) * 2) / 3),
+    calc((100vh - var(--nav-h) - var(--gap)) * 0.8 / 2)
+  );
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  padding: 14px;
+  grid-template-columns: repeat(3, var(--card));
+  gap: var(--gap);
+  height: calc(100vh - var(--nav-h));
+  place-content: center;
   margin-top: var(--nav-h);
 }
 
@@ -58,7 +64,8 @@ nav {
   position: relative;
   overflow: hidden;
   background: #1a1a1a;
-  aspect-ratio: 1;
+  width: var(--card);
+  height: var(--card);
 }
 
 .series-card img {
@@ -69,26 +76,6 @@ nav {
 
 .series-card:hover img { transform: scale(1.04); }
 
-.series-card-label {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 20px 20px 18px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.55));
-  color: #fff;
-}
-
-.series-card-name {
-  display: block;
-  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-  font-weight: 400; line-height: 1.4;
-}
-
-.series-card-type {
-  display: block;
-  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
-  opacity: 0.65; margin-top: 2px;
-}
-
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   nav { padding: 0 20px; }
@@ -96,8 +83,9 @@ nav {
   .hamburger { display: flex; }
 
   .series-grid {
+    --card: calc(100vw - 20px);
     grid-template-columns: 1fr;
-    gap: 10px;
+    height: auto;
     padding: 10px;
   }
 }
@@ -127,50 +115,26 @@ nav {
 
   <a class="series-card" href="series.html#color">
     <img src="images/hero-1.jpg" alt="Сквозь стекло (цвет)">
-    <div class="series-card-label">
-      <span class="series-card-name">Сквозь стекло</span>
-      <span class="series-card-type">цвет</span>
-    </div>
   </a>
 
   <a class="series-card" href="series.html#bw">
     <img src="images/hero-2.jpg" alt="Сквозь стекло (ч/б)">
-    <div class="series-card-label">
-      <span class="series-card-name">Сквозь стекло</span>
-      <span class="series-card-type">ч/б</span>
-    </div>
   </a>
 
   <a class="series-card" href="series.html#paris">
     <img src="images/hero-3.jpg" alt="Ночной Париж">
-    <div class="series-card-label">
-      <span class="series-card-name">Ночной Париж</span>
-      <span class="series-card-type">цвет</span>
-    </div>
   </a>
 
   <a class="series-card" href="series.html#sena">
     <img src="images/hero-4.jpg" alt="Сена">
-    <div class="series-card-label">
-      <span class="series-card-name">Сена</span>
-      <span class="series-card-type">ч/б</span>
-    </div>
   </a>
 
   <a class="series-card" href="series.html#india">
     <img src="images/hero-5.jpg" alt="Индия">
-    <div class="series-card-label">
-      <span class="series-card-name">Индия</span>
-      <span class="series-card-type">цвет</span>
-    </div>
   </a>
 
   <a class="series-card" href="series.html#fotobana">
     <img src="images/hero-6.jpg" alt="Фотобана">
-    <div class="series-card-label">
-      <span class="series-card-name">Фотобана</span>
-      <span class="series-card-type">ч/б</span>
-    </div>
   </a>
 
 </div>

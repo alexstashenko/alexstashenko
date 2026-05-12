@@ -64,6 +64,33 @@ a { color: inherit; text-decoration: none; }
 .nav-prev { left: 0; }
 .nav-next { right: 0; }
 
+/* ── MOBILE SCROLL ── */
+.scroll-container { display: none; }
+
+@media (max-width: 768px) {
+  .viewer, .nav-btn { display: none; }
+  .scroll-container {
+    display: block;
+    position: fixed;
+    inset: 56px 0 48px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .scroll-item {
+    height: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .scroll-item img {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain; user-select: none;
+  }
+}
+
 /* ── BOTTOM ── */
 .bottom {
   position: fixed; bottom: 0; left: 0; right: 0;
@@ -99,6 +126,8 @@ a { color: inherit; text-decoration: none; }
 <button class="nav-btn nav-prev" id="prev">&#8592;</button>
 <button class="nav-btn nav-next" id="next">&#8594;</button>
 
+<div class="scroll-container" id="scrollContainer"></div>
+
 <div class="bottom">
   <div id="dots" style="display:flex;gap:10px;align-items:center;"></div>
   <span class="counter" id="counter"></span>
@@ -133,7 +162,9 @@ let current = 0;
 const photoEl = document.getElementById('photo');
 const counterEl = document.getElementById('counter');
 const dotsEl = document.getElementById('dots');
+const scrollContainer = document.getElementById('scrollContainer');
 
+// Build dots
 photos.forEach((_, i) => {
   const dot = document.createElement('div');
   dot.className = 'dot';
@@ -141,21 +172,39 @@ photos.forEach((_, i) => {
   dotsEl.appendChild(dot);
 });
 
-function show(i, animate) {
-  current = (i + photos.length) % photos.length;
-  counterEl.textContent = (current + 1) + ' / ' + photos.length;
-  document.querySelectorAll('.dot').forEach((d, idx) => {
-    d.classList.toggle('active', idx === current);
+// Build mobile scroll items
+photos.forEach(src => {
+  const item = document.createElement('div');
+  item.className = 'scroll-item';
+  const img = document.createElement('img');
+  img.src = src;
+  item.appendChild(img);
+  scrollContainer.appendChild(item);
+});
+
+// Track active photo while scrolling
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = [...scrollContainer.children].indexOf(e.target);
+      if (idx >= 0) updateUI(idx);
+    }
   });
-  if (animate === false) {
-    photoEl.src = photos[current];
-    return;
-  }
+}, { root: scrollContainer, threshold: 0.5 });
+[...scrollContainer.children].forEach(item => observer.observe(item));
+
+function updateUI(idx) {
+  current = idx;
+  counterEl.textContent = (idx + 1) + ' / ' + photos.length;
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+}
+
+function show(i, animate) {
+  const idx = (i + photos.length) % photos.length;
+  updateUI(idx);
+  if (animate === false) { photoEl.src = photos[idx]; return; }
   photoEl.style.opacity = 0;
-  setTimeout(() => {
-    photoEl.src = photos[current];
-    photoEl.style.opacity = 1;
-  }, 200);
+  setTimeout(() => { photoEl.src = photos[idx]; photoEl.style.opacity = 1; }, 200);
 }
 
 show(0, false);
@@ -169,9 +218,11 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') location.href = 'index.html';
 });
 
+// Horizontal swipe — desktop only
 let touchX = 0;
 document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
 document.addEventListener('touchend', e => {
+  if (window.innerWidth <= 768) return;
   const dx = e.changedTouches[0].clientX - touchX;
   if (Math.abs(dx) > 40) show(dx < 0 ? current + 1 : current - 1);
 }, { passive: true });

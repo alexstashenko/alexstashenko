@@ -54,14 +54,19 @@ nav {
 .mobile-menu.open { display: flex; }
 .mobile-menu a { font-size: 22px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 300; }
 
+/* ── GRID WRAPPER ── */
+.grid-wrapper {
+  margin-top: var(--nav-h);
+  height: calc(100vh - var(--nav-h));
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 24px;
+}
+
 /* ── PAGE TITLE ── */
 .page-title {
-  position: fixed;
-  top: var(--nav-h); left: 0; right: 0;
-  height: 64px;
-  display: flex; align-items: center; justify-content: center;
   font-size: clamp(18px, 2.2vw, 28px); letter-spacing: 0.2em; text-transform: uppercase;
-  font-weight: 300; color: #fff;
+  font-weight: 300; color: #fff; text-align: center;
 }
 
 /* ── SERIES GRID ── */
@@ -69,14 +74,11 @@ nav {
   --gap: 12px;
   --card: min(
     calc((100vw * 0.8 - var(--gap) * 2) / 3),
-    calc((100vh - var(--nav-h) - 64px - var(--gap)) * 0.8 / 2)
+    calc((100vh - var(--nav-h) - 80px - var(--gap)) * 0.8 / 2)
   );
   display: grid;
   grid-template-columns: repeat(3, var(--card));
   gap: var(--gap);
-  height: calc(100vh - var(--nav-h) - 64px);
-  place-content: center;
-  margin-top: calc(var(--nav-h) + 64px);
 }
 
 .series-card {
@@ -101,11 +103,10 @@ nav {
   .nav-links { display: none; }
   .hamburger { display: flex; }
 
+  .grid-wrapper { height: auto; padding: 24px 10px 10px; gap: 16px; }
   .series-grid {
     --card: calc(100vw - 20px);
     grid-template-columns: 1fr;
-    height: auto;
-    padding: 10px;
   }
 }
 
@@ -135,32 +136,36 @@ footer {
   <a href="about.html">Об авторе</a>
 </div>
 
-<div class="page-title">Искусство видеть</div>
+<div class="grid-wrapper">
 
-<div class="series-grid">
+  <div class="page-title">Искусство видеть</div>
 
-  <a class="series-card" href="through-glass-color.html">
-    <img src="images/hero-1.jpg" alt="Сквозь стекло (цвет)">
-  </a>
+  <div class="series-grid">
 
-  <a class="series-card" href="through-glass-bw.html">
-    <img src="images/hero-2.jpg" alt="Сквозь стекло (ч/б)">
-  </a>
+    <a class="series-card" href="through-glass-color.html">
+      <img src="images/hero-1.jpg" alt="Сквозь стекло (цвет)">
+    </a>
 
-  <div class="series-card">
-    <img src="images/hero-3.jpg" alt="Ночной Париж">
-  </div>
+    <a class="series-card" href="through-glass-bw.html">
+      <img src="images/hero-2.jpg" alt="Сквозь стекло (ч/б)">
+    </a>
 
-  <div class="series-card">
-    <img src="images/hero-4.jpg" alt="Сена">
-  </div>
+    <div class="series-card">
+      <img src="images/hero-3.jpg" alt="Ночной Париж">
+    </div>
 
-  <div class="series-card">
-    <img src="images/hero-5.jpg" alt="Индия">
-  </div>
+    <div class="series-card">
+      <img src="images/hero-4.jpg" alt="Сена">
+    </div>
 
-  <div class="series-card">
-    <img src="images/hero-6.jpg" alt="Фотобана">
+    <div class="series-card">
+      <img src="images/hero-5.jpg" alt="Индия">
+    </div>
+
+    <div class="series-card">
+      <img src="images/hero-6.jpg" alt="Фотобана">
+    </div>
+
   </div>
 
 </div>

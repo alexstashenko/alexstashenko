@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Александр Сташенко — Фотограф</title>
-  <meta name="description" content="Фотопортфолио Александра Сташенко">
+  <title>Александр Сташенко</title>
+  <meta name="description" content="Искусство видеть">
+  <meta property="og:title" content="Александр Сташенко">
+  <meta property="og:description" content="Искусство видеть">
+  <meta property="og:image" content="https://alexstashenko.com/images/hero-1.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alexstashenko.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Александр Сташенко">
+  <meta name="twitter:description" content="Искусство видеть">
+  <meta name="twitter:image" content="https://alexstashenko.com/images/hero-1.jpg">
   <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -45,19 +54,29 @@ nav {
 .mobile-menu.open { display: flex; }
 .mobile-menu a { font-size: 22px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 300; }
 
+/* ── PAGE TITLE ── */
+.page-title {
+  position: fixed;
+  top: var(--nav-h); left: 0; right: 0;
+  height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  font-weight: 300; color: #fff;
+}
+
 /* ── SERIES GRID ── */
 .series-grid {
   --gap: 12px;
   --card: min(
     calc((100vw * 0.8 - var(--gap) * 2) / 3),
-    calc((100vh - var(--nav-h) - var(--gap)) * 0.8 / 2)
+    calc((100vh - var(--nav-h) - 40px - var(--gap)) * 0.8 / 2)
   );
   display: grid;
   grid-template-columns: repeat(3, var(--card));
   gap: var(--gap);
-  height: calc(100vh - var(--nav-h));
+  height: calc(100vh - var(--nav-h) - 40px);
   place-content: center;
-  margin-top: var(--nav-h);
+  margin-top: calc(var(--nav-h) + 40px);
 }
 
 .series-card {
@@ -115,6 +134,8 @@ footer {
   <a href="series.html">Серии</a>
   <a href="about.html">Об авторе</a>
 </div>
+
+<div class="page-title">Искусство видеть</div>
 
 <div class="series-grid">
 

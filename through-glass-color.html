@@ -189,6 +189,10 @@ function updateUI(idx) {
 function show(i, animate) {
   const idx = (i + photos.length) % photos.length;
   updateUI(idx);
+  if (window.innerWidth <= 768) {
+    scrollContainer.children[idx]?.scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
   if (animate === false) { photoEl.src = photos[idx]; return; }
   photoEl.style.opacity = 0;
   setTimeout(() => { photoEl.src = photos[idx]; photoEl.style.opacity = 1; }, 200);
@@ -205,13 +209,18 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') location.href = 'index.html';
 });
 
-// Horizontal swipe — desktop only
-let touchX = 0;
-document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+// Swipe: horizontal → next/prev, vertical → native scroll
+let touchX = 0, touchY = 0;
+document.addEventListener('touchstart', e => {
+  touchX = e.touches[0].clientX;
+  touchY = e.touches[0].clientY;
+}, { passive: true });
 document.addEventListener('touchend', e => {
-  if (window.innerWidth <= 768) return;
   const dx = e.changedTouches[0].clientX - touchX;
-  if (Math.abs(dx) > 40) show(dx < 0 ? current + 1 : current - 1);
+  const dy = e.changedTouches[0].clientY - touchY;
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+    show(dx < 0 ? current + 1 : current - 1);
+  }
 }, { passive: true });
 </script>
 </body>

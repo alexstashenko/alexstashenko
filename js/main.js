@@ -22,11 +22,13 @@
 
   btn.addEventListener('click', function () {
     menu.classList.toggle('open');
+    btn.classList.toggle('open');
   });
 
   menu.querySelectorAll('a').forEach(function (a) {
     a.addEventListener('click', function () {
       menu.classList.remove('open');
+      btn.classList.remove('open');
     });
   });
 })();

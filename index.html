@@ -104,6 +104,15 @@ nav {
 
 .series-card:hover img { transform: scale(1.04); }
 
+.series-card-label {
+  position: absolute; bottom: 12px; left: 12px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400;
+  pointer-events: none;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   nav { padding: 0 20px; }
@@ -151,26 +160,32 @@ footer {
 
     <a class="series-card" href="through-glass-color.html">
       <img src="images/hero-1.jpg" alt="Сквозь стекло (цвет)">
+      <span class="series-card-label">Сквозь стекло (цвет)</span>
     </a>
 
     <a class="series-card" href="through-glass-bw.html">
       <img src="images/hero-2.jpg" alt="Сквозь стекло (ч/б)">
+      <span class="series-card-label">Сквозь стекло (ч/б)</span>
     </a>
 
     <div class="series-card">
-      <img src="images/hero-3.jpg" alt="Ночной Париж">
+      <img src="images/hero-3.jpg" alt="Париж (цвет)">
+      <span class="series-card-label">Париж (цвет)</span>
     </div>
 
     <div class="series-card">
-      <img src="images/hero-4.jpg" alt="Сена">
+      <img src="images/hero-4.jpg" alt="Париж (ч/б)">
+      <span class="series-card-label">Париж (ч/б)</span>
     </div>
 
     <div class="series-card">
-      <img src="images/hero-5.jpg" alt="Индия">
+      <img src="images/hero-5.jpg" alt="Индия (цвет)">
+      <span class="series-card-label">Индия (цвет)</span>
     </div>
 
     <div class="series-card">
-      <img src="images/hero-6.jpg" alt="Фотобана">
+      <img src="images/hero-6.jpg" alt="Фотобана (ч/б)">
+      <span class="series-card-label">Фотобана (ч/б)</span>
     </div>
 
   </div>
